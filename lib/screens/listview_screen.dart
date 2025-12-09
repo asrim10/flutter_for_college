@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_for_college/models/student_model.dart';
+import 'package:flutter_for_college/widgets/listview_widget.dart';
 import 'output_screen.dart';
 
 class ListViewScreen extends StatefulWidget {
@@ -17,7 +18,6 @@ class _ListViewScreenState extends State<ListViewScreen> {
   String? _selectedCity;
   final List<StudentModel> _lstStudents = [];
 
-  // To display list of cities in dropdown
   final List<DropdownMenuItem<String>> _cities = [
     DropdownMenuItem(value: "Chitwan", child: Text("Chitwan")),
     DropdownMenuItem(value: "Kathmandu", child: Text("Kathmandu")),
@@ -46,6 +46,7 @@ class _ListViewScreenState extends State<ListViewScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 20),
+
               TextFormField(
                 controller: _fnameController,
                 decoration: InputDecoration(
@@ -58,14 +59,13 @@ class _ListViewScreenState extends State<ListViewScreen> {
                   filled: true,
                   fillColor: Colors.grey.shade50,
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter first name';
-                  }
-                  return null;
-                },
+                validator: (value) => value == null || value.isEmpty
+                    ? 'Please enter first name'
+                    : null,
               ),
+
               const SizedBox(height: 20),
+
               TextFormField(
                 controller: _lnameController,
                 decoration: InputDecoration(
@@ -78,19 +78,16 @@ class _ListViewScreenState extends State<ListViewScreen> {
                   filled: true,
                   fillColor: Colors.grey.shade50,
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter last name';
-                  }
-                  return null;
-                },
+                validator: (value) => value == null || value.isEmpty
+                    ? 'Please enter last name'
+                    : null,
               ),
+
               const SizedBox(height: 20),
+
               DropdownButtonFormField(
                 items: _cities,
-                onChanged: (value) {
-                  _selectedCity = value;
-                },
+                onChanged: (value) => _selectedCity = value,
                 decoration: InputDecoration(
                   labelText: 'City',
                   prefixIcon: const Icon(Icons.location_city),
@@ -100,21 +97,19 @@ class _ListViewScreenState extends State<ListViewScreen> {
                   filled: true,
                   fillColor: Colors.grey.shade50,
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please select a city';
-                  }
-                  return null;
-                },
+                validator: (value) => value == null || value.isEmpty
+                    ? 'Please select a city'
+                    : null,
               ),
+
               const SizedBox(height: 30),
+
               Row(
                 children: [
                   Expanded(
                     child: ElevatedButton.icon(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          //Add student code goes here
                           StudentModel student = StudentModel(
                             fname: _fnameController.text,
                             lname: _lnameController.text,
@@ -145,7 +140,8 @@ class _ListViewScreenState extends State<ListViewScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const OutputScreen(),
+                            builder: (context) =>
+                                OutputScreen(lstStudents: _lstStudents),
                           ),
                         );
                       },
@@ -163,47 +159,10 @@ class _ListViewScreenState extends State<ListViewScreen> {
                   ),
                 ],
               ),
+
               const SizedBox(height: 40),
-              if (_lstStudents.isNotEmpty) ...{
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: _lstStudents.length,
-                  itemBuilder: (context, index) {
-                    final student = _lstStudents[index];
-                    return Card(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          // make circle like insta story
-                          child: Text(student.fname[0].toUpperCase()),
-                        ),
-                        title: Text('${student.fname} ${student.lname}'),
-                        subtitle: Text(student.city),
-                        trailing: Wrap(
-                          spacing: 12,
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _lstStudents.removeAt(index);
-                                });
-                              },
-                              icon: const Icon(Icons.delete, color: Colors.red),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              } else ...{
-                Text(
-                  "No Data",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 24, color: Colors.grey.shade400),
-                ),
-              },
+
+              ListViewWidget(lstStudents: _lstStudents),
             ],
           ),
         ),

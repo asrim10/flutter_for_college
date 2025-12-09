@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'listview_screen.dart';
+import 'package:flutter_for_college/screens/listview_screen.dart';
 import 'gridview_screen.dart';
 import 'cardview_screen.dart';
 import 'stack_layout_screen.dart';
