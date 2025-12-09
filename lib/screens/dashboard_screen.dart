@@ -3,6 +3,7 @@ import 'package:flutter_for_college/screens/listview_screen.dart';
 import 'gridview_screen.dart';
 import 'cardview_screen.dart';
 import 'stack_layout_screen.dart';
+import 'employee_detail_screen.dart'; // <-- ADD THIS
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -37,6 +38,7 @@ class DashboardScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 16, color: Colors.white70),
               ),
               const SizedBox(height: 60),
+
               Expanded(
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(
@@ -63,6 +65,7 @@ class DashboardScreen extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 20),
+
                       _buildDashboardCard(
                         context,
                         title: 'GridView',
@@ -84,6 +87,7 @@ class DashboardScreen extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 20),
+
                       _buildDashboardCard(
                         context,
                         title: 'CardView',
@@ -105,6 +109,7 @@ class DashboardScreen extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 20),
+
                       _buildDashboardCard(
                         context,
                         title: 'Stack Layout',
@@ -122,6 +127,27 @@ class DashboardScreen extends StatelessWidget {
                           );
                         },
                       ),
+                      const SizedBox(height: 20),
+
+                      _buildDashboardCard(
+                        context,
+                        title: 'Employee Details',
+                        subtitle: 'Add and view employee records',
+                        icon: Icons.badge_rounded,
+                        gradient: LinearGradient(
+                          colors: [Colors.teal.shade400, Colors.teal.shade600],
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const EmployeeDetailScreen(),
+                            ),
+                          );
+                        },
+                      ),
+
                       const SizedBox(height: 20),
                     ],
                   ),
