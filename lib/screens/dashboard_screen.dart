@@ -3,7 +3,7 @@ import 'package:flutter_for_college/screens/listview_screen.dart';
 import 'gridview_screen.dart';
 import 'cardview_screen.dart';
 import 'stack_layout_screen.dart';
-import 'employee_detail_screen.dart'; // <-- ADD THIS
+import 'employee_detail_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -142,7 +142,7 @@ class DashboardScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  const EmployeeDetailScreen(),
+                                  const EmployeeDetailsScreen(),
                             ),
                           );
                         },
