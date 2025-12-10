@@ -4,6 +4,7 @@ import 'gridview_screen.dart';
 import 'cardview_screen.dart';
 import 'stack_layout_screen.dart';
 import 'employee_detail_screen.dart';
+import 'stack_picture_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -64,6 +65,7 @@ class DashboardScreen extends StatelessWidget {
                           );
                         },
                       ),
+
                       const SizedBox(height: 20),
 
                       _buildDashboardCard(
@@ -86,6 +88,7 @@ class DashboardScreen extends StatelessWidget {
                           );
                         },
                       ),
+
                       const SizedBox(height: 20),
 
                       _buildDashboardCard(
@@ -108,6 +111,7 @@ class DashboardScreen extends StatelessWidget {
                           );
                         },
                       ),
+
                       const SizedBox(height: 20),
 
                       _buildDashboardCard(
@@ -127,6 +131,7 @@ class DashboardScreen extends StatelessWidget {
                           );
                         },
                       ),
+
                       const SizedBox(height: 20),
 
                       _buildDashboardCard(
@@ -149,6 +154,30 @@ class DashboardScreen extends StatelessWidget {
                       ),
 
                       const SizedBox(height: 20),
+
+                      // ⭐ NEW — Stack Picture Example
+                      _buildDashboardCard(
+                        context,
+                        title: 'Stack Picture',
+                        subtitle: 'View stack-based image layout',
+                        icon: Icons.image_rounded,
+                        gradient: LinearGradient(
+                          colors: [
+                            Colors.purpleAccent.shade400,
+                            Colors.deepPurpleAccent.shade700,
+                          ],
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const StackPictureScreen(),
+                            ),
+                          );
+                        },
+                      ),
+
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
@@ -159,6 +188,8 @@ class DashboardScreen extends StatelessWidget {
       ),
     );
   }
+
+  // ---------------- CARD UI ------------------
 
   Widget _buildDashboardCard(
     BuildContext context, {
@@ -195,7 +226,9 @@ class DashboardScreen extends StatelessWidget {
               ),
               child: Icon(icon, size: 40, color: Colors.white),
             ),
+
             const SizedBox(width: 20),
+
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -216,6 +249,7 @@ class DashboardScreen extends StatelessWidget {
                 ],
               ),
             ),
+
             const Icon(
               Icons.arrow_forward_ios_rounded,
               color: Colors.white,
