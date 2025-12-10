@@ -10,7 +10,7 @@ class StackPictureScreen extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: <Widget>[
-            Container(
+            SizedBox(
               height: 400,
               width: 400,
               child: Image.network(
