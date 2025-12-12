@@ -32,6 +32,5 @@ ThemeData getApplicationTheme() {
       selectedItemColor: Colors.deepPurple,
       unselectedItemColor: Colors.grey,
     ),
-    scaffoldBackgroundColor: Colors.white,
   );
 }
