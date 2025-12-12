@@ -28,10 +28,5 @@ ThemeData getApplicationTheme() {
         fontFamily: 'OpenSans SemiBold',
       ),
     ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      selectedItemColor: Colors.deepPurple,
-      unselectedItemColor: Colors.grey,
-    ),
-    scaffoldBackgroundColor: Colors.white,
   );
 }
